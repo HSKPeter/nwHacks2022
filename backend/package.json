@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@azure/cognitiveservices-computervision": "^8.1.0",
+    "async": "^3.2.3",
     "express": "^4.17.2"
   }
 }
