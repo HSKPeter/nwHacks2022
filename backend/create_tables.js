@@ -163,6 +163,12 @@ async function get_list_lost_items() {
     return result;
 }
 
+async function get_list_found_items() {
+    let sql = `SELECT * FROM found_items`;
+    let result = await db.async_query(sql); 
+    return result;
+}
+
 async function get_list_all_hashtag() {
     let sql = `SELECT name FROM hashtags`;
     let result = await db.async_query(sql); 
@@ -220,5 +226,5 @@ console.log(formatting_date(new Date(2021,0,15,16,17,1)));
 console.log(formatting_date(new Date())); 
 
 
-module.exports = {insert_found_items, reset_tables, get_list_all_hashtag, get_list_lost_items, insert_lost_items,add_hashtag, formatting_date, create_tables};
+module.exports = {get_list_found_items, insert_found_items, reset_tables, get_list_all_hashtag, get_list_lost_items, insert_lost_items,add_hashtag, formatting_date, create_tables};
 
