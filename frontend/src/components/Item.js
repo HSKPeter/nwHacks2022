@@ -52,8 +52,6 @@ function Item( {item}) {
           <DialogContentText>
             {item.contacts}
           </DialogContentText>
-          
-          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
