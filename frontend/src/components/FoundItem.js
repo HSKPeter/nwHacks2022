@@ -21,12 +21,15 @@ import Grid from '@mui/material/Grid';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import uploadFileToBlob from "../utilities/upload-image-to-azure-blob"
+import AddIcon from '@mui/icons-material/Add';
+import ClearIcon from '@mui/icons-material/Clear';
 
 
 function ReportLoss() {
   const [open, setOpen] = React.useState(false);
   const [isUploadingImage, setImageUploadingStatus] = React.useState(false);
   const [imagePath, setImagePath] = React.useState("");
+  const [hashtags, updateHashtags] = React.useState([]);
 
   const handleFound = () => {
     setOpen(true);
@@ -40,6 +43,34 @@ function ReportLoss() {
     setOpen(false);
   }
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode == 13) {
+      addHashtag();
+    }
+  }
+
+  const addHashtag = () => {
+    const input = document.querySelector("#hashtags-input").value
+    if (hashtags.includes(input)) {
+      return
+    }
+    const newHashtags = hashtags.slice();
+    newHashtags.push(input);
+    console.log(newHashtags)
+    document.querySelector("#hashtags-input").value = "";
+    updateHashtags(newHashtags);
+  }
+
+  const removeTag = (hashtag) => {
+    const newHashtags = hashtags.slice();
+    const index = newHashtags.indexOf(hashtag);
+    if (index > -1) {
+      newHashtags.splice(index, 1);
+    }
+    console.log("xx")
+    updateHashtags(newHashtags);
+  }
+
   const Input = styled('input')({
     display: 'none',
   });
@@ -51,7 +82,7 @@ function ReportLoss() {
     const tags = await computerVision(imageUrl)
     setImageUploadingStatus(false);
     setImagePath(imageUrl)
-    console.log(tags);
+    updateHashtags(tags.map(tag => tag.name));
   }
 
   return (
@@ -134,6 +165,36 @@ function ReportLoss() {
             sx={{ width: '75vw', maxWidth: 450 }}
 
             type="text" />
+          <DialogContentText>
+            <br />
+          </DialogContentText>
+          <>
+            <TextField autoFocusmargin="dense" id="hashtags-input" label="hashtags" variant="outlined"
+              label="Hashtags"
+              placeholder='Hashtags'
+              sx={{ width: '75vw', maxWidth: 450 }}
+              InputProps={{
+                endAdornment: (
+                  <AddIcon onClick={addHashtag} />
+                )
+              }}
+              onKeyDown={handleKeyDown}
+              type="text" />
+            <Box sx={{ marginTop: "12px", display: 'block' }}>
+
+              {
+                hashtags.map((hashtag, i) => {
+                  return (
+                    <div
+                      style={{ margin: "8px 6px", padding: "2px 4px", background: "#FAFAFA", border: "1px solid #E8E8E8", borderRadius: "4px", display: 'inline-block' }}
+                      key={`hashtag-${i}`}>
+                      <span>{"#" + hashtag}</span>
+                      <ClearIcon sx={{ "fontSize": "10px", color: "white", marginLeft: "6px", padding: "1px", backgroundColor: "#E33E2C", borderRadius: "4px" }} onClick={() => { removeTag(hashtag) }} />
+                    </div>
+                  )
+                })}
+            </Box>
+          </>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
