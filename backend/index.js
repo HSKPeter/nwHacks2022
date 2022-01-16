@@ -94,7 +94,7 @@ app.post('/search', async (req, res) => {
       text: hashtag,
       score: scores[index]
     }
-  })
+  }).sort(sortNumbersInDescendingOrder);
 
   const result = [];
   const ceilingNumber = 10;
@@ -110,3 +110,7 @@ app.post('/search', async (req, res) => {
 app.listen(port, () => {
   console.log(`Listening at PORT ${port}`)
 });
+
+function sortNumbersInDescendingOrder(num1, num2) {
+  return num2 - num1;
+}
