@@ -46,11 +46,20 @@ function ReportLoss() {
 
   const saveFound = () => {
     let foundItem = {
-      imagePath, description, foundTime, location, contact
+      imagePath, description, foundTime, location, contact, hashtags
     }
-    console.log(foundItem);
+
+    fetch("http://localhost:8080/items-found", {
+      method: 'POST',
+      body: JSON.stringify(foundItem),
+      headers: { 'Content-Type': 'application/json'}
+    }).then(() => {
+      console.log("found notice posted");
+    });
+
     setOpen(false);
     setImagePath("");
+    updateHashtags([]);
   }
 
   const handleKeyDown = (e) => {
@@ -97,7 +106,7 @@ function ReportLoss() {
 
   return (
     <Fragment>
-      <Card sx={{ width: '75vw', maxWidth: 500, mx: 'auto', mt: '1em' }}>
+      <Card sx={{ width: '75vw', maxWidth: 500, mx: 'auto', mt: '1em', textAlign:'center' }}>
         <CardContent>
           <div style={{ fontSize: "160px" }}>
             🗣️

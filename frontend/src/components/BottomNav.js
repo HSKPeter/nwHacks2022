@@ -20,6 +20,7 @@ function BottomNav() {
   return (
       <Box sx={{ position: 'fixed', bottom: 0, left: 0, right:0, width: '100vw' }} elevation={3}>
       <BottomNavigation
+      sx={{}}
         showLabels
         value={value}
         onChange={(event, newValue) => {
@@ -28,8 +29,6 @@ function BottomNav() {
       >
         <BottomNavigationAction label="Home" icon={<HomeIcon/>} onClick={() => {navigate('/')}}/>
         <BottomNavigationAction label="Items" icon={<SearchIcon />} onClick={() => {navigate('/items')}} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
       </BottomNavigation>
     </Box>
   )

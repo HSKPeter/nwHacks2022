@@ -43,7 +43,6 @@ function Item( {item}) {
           </Typography>
         </CardContent>
         <CardActions>
-        <Button size="small">Share</Button>
         <Button size="small" onClick={getContacts}>Get contacts</Button>
       </CardActions>
       </CardActionArea>
