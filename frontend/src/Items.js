@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import Item from './components/Item'
 import SearchBar from './components/SearchBar'
 import Grid from '@mui/material/Grid';
+import { Box } from '@mui/system';
 
 function Items() {
   const data = [
@@ -42,7 +43,9 @@ function Items() {
       <Grid container spacing={1} sx={{mb:10}}>
         {data.map((item) =>
         (
+          <Grid item xs={12} sm={6} md={4} lg={3}>
             <Item key={item.id} item={item} />
+            </Grid>
         )
         )}
       </Grid>

@@ -28,8 +28,6 @@ function BottomNav() {
       >
         <BottomNavigationAction label="Home" icon={<HomeIcon/>} onClick={() => {navigate('/')}}/>
         <BottomNavigationAction label="Items" icon={<SearchIcon />} onClick={() => {navigate('/items')}} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
       </BottomNavigation>
     </Box>
   )
