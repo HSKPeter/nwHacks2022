@@ -46,11 +46,20 @@ function ReportLoss() {
 
   const saveFound = () => {
     let foundItem = {
-      imagePath, description, foundTime, location, contact
+      imagePath, description, foundTime, location, contact, hashtags
     }
-    console.log(foundItem);
+
+    fetch("localhost:8080/items-found", {
+      method: 'POST',
+      body: JSON.stringify(foundItem),
+      headers: { 'Content-Type': 'application/json'}
+    }).then(() => {
+      console.log("found notice posted");
+    });
+
     setOpen(false);
     setImagePath("");
+    updateHashtags([]);
   }
 
   const handleKeyDown = (e) => {
