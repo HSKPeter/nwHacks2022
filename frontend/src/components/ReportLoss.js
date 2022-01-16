@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef } from 'react'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -14,25 +14,46 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-
 function ReportLoss() {
-  function handleSelectedTags(items) {
-    console.log(items);
-  }
 
   const navigate = useNavigate();
 
   const [open, setOpen] = React.useState(false);
+  const [description, setDescription] = React.useState("");
+  const [lossTime, setLossTime] = React.useState("");
+  const [location, setLocation] = React.useState("");
+  const [contact, setContact] = React.useState("");
 
   const handleReportLoss = () => {
     setOpen(true);
   }
 
+
+
   const handleClose = () => {
     setOpen(false);
   }
 
+  
   const saveLoss = () => {
+    let lossItem = {
+      description: description,
+      lossTime: lossTime,
+      location: location,
+      contact: contact
+    }
+
+    fetch("localhost:8080/items-lost", {
+    method: 'POST',
+    body: JSON.stringify(lossItem),
+    headers: { 'Content-Type': 'application/json'}
+  }).then(() => {
+    console.log("loss notice posted");
+  });
+
+
+
+    console.log(lossItem)
     setOpen(false);
     navigate('/items');
 
@@ -65,7 +86,9 @@ function ReportLoss() {
           <TextField autoFocusmargin="dense" id="description" label="Description"
             placeholder='description' multiline
             sx={{ width: '75vw', maxWidth: 450 }}
-            type="text" />
+            type="text" onChange={(e) => {
+              setDescription(e.target.value);
+            }} />
           <DialogContentText>
             <br />
           </DialogContentText>
@@ -75,6 +98,9 @@ function ReportLoss() {
             id="datetime-local"
             label="LossTime"
             type="datetime-local"
+            onChange={(e) => {
+              setLossTime(e.target.value);
+            }}
             defaultValue="2021-01-16T10:30"
             sx={{ width: '75vw', maxWidth: 450 }}
             InputLabelProps={{
@@ -87,7 +113,9 @@ function ReportLoss() {
           <TextField autoFocusmargin="dense" id="location" label="Location"
             placeholder='Location'
             sx={{ width: '75vw', maxWidth: 450 }}
-            type="text" />
+            type="text" onChange={(e) => {
+              setLocation(e.target.value);
+            }} />
 
           <DialogContentText>
             <br />
@@ -95,8 +123,10 @@ function ReportLoss() {
           <TextField autoFocusmargin="dense" id="contact" label="Contacts"
             placeholder='contacts'
             sx={{ width: '75vw', maxWidth: 450 }}
-
-            type="text" />
+            type="text"
+            onChange={(e) => {
+              setContact(e.target.value);
+            }} />
             
         </DialogContent>
         <DialogActions>
