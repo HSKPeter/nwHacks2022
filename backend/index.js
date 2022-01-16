@@ -63,14 +63,11 @@ app.post('/search', async (req, res) => {
   const hashtags_dict = await tables.get_list_all_hashtag();
 
   let hashtags = [];
-  //console.log(hashtags_dict);
 
 
   hashtags_dict.forEach((obj) => {
     hashtags.push(obj.name);
   });
-
-  //console.log(hashtags);
 
   const data = {
     "documents": hashtags,
