@@ -8,7 +8,7 @@ import Items from './Items';
 
 
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Grid container spacing={2}>
@@ -28,5 +28,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

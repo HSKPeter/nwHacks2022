@@ -60,6 +60,7 @@ function ReportLoss() {
     setOpen(false);
     setImagePath("");
     updateHashtags([]);
+    document.querySelector("#navigate-to-item").click();
   }
 
   const handleKeyDown = (e) => {
@@ -86,7 +87,7 @@ function ReportLoss() {
     if (index > -1) {
       newHashtags.splice(index, 1);
     }
-    console.log("xx")
+    
     updateHashtags(newHashtags);
   }
 

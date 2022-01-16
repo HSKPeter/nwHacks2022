@@ -28,7 +28,7 @@ function BottomNav() {
         }}
       >
         <BottomNavigationAction label="Home" icon={<HomeIcon/>} onClick={() => {navigate('/')}}/>
-        <BottomNavigationAction label="Items" icon={<SearchIcon />} onClick={() => {navigate('/items')}} />
+        <BottomNavigationAction label="Items" icon={<SearchIcon />} onClick={() => {navigate('/items')}} id="navigate-to-item"/>
       </BottomNavigation>
     </Box>
   )

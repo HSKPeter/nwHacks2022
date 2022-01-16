@@ -12,7 +12,7 @@ export default function DenseAppBar() {
       <AppBar position="static">
         <Toolbar variant="dense">
           <Typography variant="h6" color="inherit" component="div"> 
-          🕵️ LostnFound
+          🕵🏻 LostnFound
           </Typography>
         </Toolbar>
       </AppBar>

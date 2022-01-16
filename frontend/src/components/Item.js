@@ -29,17 +29,17 @@ function Item( {item}) {
         <CardMedia
           component="img"
           height="400"
-          image={item.img}
-          alt="Cat"
+          image={item.photo_url}
+          alt={item.name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {item.location}
+            {item.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Description: {item.description}
+            Location found: {item.location}
             <br/>
-            Date: {item.day}
+            Date found: {item.date}
           </Typography>
         </CardContent>
         <CardActions>

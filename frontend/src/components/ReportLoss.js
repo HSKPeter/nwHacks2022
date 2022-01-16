@@ -55,7 +55,8 @@ function ReportLoss() {
 
     console.log(lossItem)
     setOpen(false);
-    navigate('/items');
+    // navigate('/items');
+    document.querySelector("#navigate-to-item").click();
 
   }
 

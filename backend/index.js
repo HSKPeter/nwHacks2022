@@ -77,17 +77,17 @@ app.post('/search', async (req, res) => {
   });
 
   const data = {
-    "documents": hashtags,
+    "documents": hashtags.slice(1),
     "query": keywords
   }
   const response = await fetch('https://api.openai.com/v1/engines/davinci/search', {
     method: 'post',
     body: JSON.stringify(data),
-    headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${OPEN_AI_API_KEY}` }
+    headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${open_ai_api_key}` }
   });
   const body = await response.json();
   console.log(body)
-  const scores = body.map(item => item.score);
+  const scores = body.data.map(item => item.score);
 
   hashtags = hashtags.map((hashtag, index) => {
     return {
