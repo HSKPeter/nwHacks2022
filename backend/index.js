@@ -12,14 +12,20 @@ app.get('/', (req, res) => {
 });
 
 // Report a lost item (image)
-
-
-// Report a found item (image)
+app.post('/items-lost', async (req, res) => {
+  res.sendStatus(200);
+});
 
 // Retrieve a list of found items
+app.get('/items-found', async (req, res) => {
+  const itemsFound = ["Hello World"];
+  res.sendStatus(200).send({ data: JSON.stringify(itemsFound) });
+});
 
-
-// function to call Azure API for hashtags and description of images
+// Report a found item (image)
+app.post('/items-found', async (req, res) => {
+  res.sendStatus(200);
+});
 
 // Search for item
 app.post('/search', async (req, res) => {
@@ -53,7 +59,7 @@ app.post('/search', async (req, res) => {
     }
   })
 
-  res.sendStatus(200).send({ data: JSON.stringify(ha) });
+  res.sendStatus(200).send({ data: JSON.stringify(hashtags) });
 });
 
 
