@@ -9,8 +9,8 @@ app.use(express.json());
 app.use(cors());
 
 //connect to database and import functions 
-// let db = require("./connect_db");
-// let tables = require("./create_tables");
+let db = require("./connect_db");
+let tables = require("./create_tables");
 
 
 app.get('/', (req, res) => {
@@ -27,7 +27,7 @@ app.post('/items-lost', async (req, res) => {
   const transport = "49";
   const image_url = "http://www.google.com/JHSJnewj28";
 
-  // await tables.insert_lost_items(name, date, lat, lon, transport, image_url);
+  await tables.insert_lost_items(name, date, lat, lon, transport, image_url);
   res.sendStatus(200);
 });
 
@@ -51,7 +51,7 @@ app.post('/items-found', async (req, res) => {
   const transport = "49";
   const image_url = "http://www.google.com/JHSJnewj28";
 
-  // await tables.insert_found_items(name, date, lat, lon, transport, image_url);
+  await tables.insert_found_items(name, date, lat, lon, transport, image_url);
 
   res.sendStatus(200);
 });
@@ -59,6 +59,7 @@ app.post('/items-found', async (req, res) => {
 // Search for item
 app.post('/search', async (req, res) => {
   const { keywords } = req.body;
+  console.log(keywords)
   if (typeof keywords !== "string") {
     res.sendStatus(500).send({ message: "Keyword must be a string." });
     return;
@@ -100,6 +101,7 @@ app.post('/search', async (req, res) => {
   }
 
   res.send({ data: hashtags });
+  // res.sendStatus(200);
 });
 
 

@@ -49,7 +49,7 @@ function ReportLoss() {
       imagePath, description, foundTime, location, contact, hashtags
     }
 
-    fetch("localhost:8080/items-found", {
+    fetch("http://localhost:8080/items-found", {
       method: 'POST',
       body: JSON.stringify(foundItem),
       headers: { 'Content-Type': 'application/json'}
