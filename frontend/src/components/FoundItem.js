@@ -56,20 +56,23 @@ function ReportLoss() {
 
   return (
     <Fragment>
-      <Card sx={{ width:'75vw', maxWidth:500, mx: 'auto', mt: '1em' }}>
+      <Card sx={{ width: '75vw', maxWidth: 500, mx: 'auto', mt: '1em' }}>
         <CardContent>
-
+          <div style={{ fontSize: "160px" }}>
+            🗣️
+          </div>
           <Typography variant="h5" component="div">
-            I found an item
+            {/* I found an item */}
+            I have found an item
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={handleFound}>Found item</Button>
+          <Button size="small" onClick={handleFound}>Share Info</Button>
         </CardActions>
       </Card>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Found Item</DialogTitle>
+        <DialogTitle>Share Info</DialogTitle>
         <DialogContent>
 
           <Grid container spacing={2}>
@@ -90,7 +93,7 @@ function ReportLoss() {
                 ?
                 <ImageList sx={{ width: 100 }} rowHeight={164} cols={1}>
                   <ImageListItem >
-                    <img src={imagePath} style={{objectFit: "contain"}}/>
+                    <img src={imagePath} style={{ objectFit: "contain" }} />
                   </ImageListItem>
                 </ImageList>
                 : ""}

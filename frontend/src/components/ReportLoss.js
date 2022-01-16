@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ReportLoss() {
 
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const [open, setOpen] = React.useState(false);
 
@@ -37,11 +37,14 @@ function ReportLoss() {
 
   return (
     <Fragment>
-      <Card sx={{ width:'75vw', maxWidth:500, mx: 'auto', mt: '1em' }}>
+      <Card sx={{ width: '75vw', maxWidth: 500, mx: 'auto', mt: '1em' }}>
         <CardContent>
-
+          <div style={{fontSize: "160px"}}>
+            😕
+          </div>
           <Typography variant="h5" component="div">
-            I would like to report lost
+            {/* I would like to report lost */}
+            I have lost an item
           </Typography>
         </CardContent>
         <CardActions>
@@ -56,9 +59,9 @@ function ReportLoss() {
             Please describe your loss item
           </DialogContentText>
           <TextField autoFocusmargin="dense" id="description" label="Description"
-          placeholder='description' multiline
-          sx={{ width: '75vw', maxWidth: 450 }}
-          type="text" />
+            placeholder='description' multiline
+            sx={{ width: '75vw', maxWidth: 450 }}
+            type="text" />
           <DialogContentText>
             <br />
           </DialogContentText>
@@ -78,16 +81,16 @@ function ReportLoss() {
             <br />
           </DialogContentText>
           <TextField autoFocusmargin="dense" id="location" label="Location"
-          placeholder='Location'
-          sx={{ width: '75vw', maxWidth: 450 }}
-          type="text" />
+            placeholder='Location'
+            sx={{ width: '75vw', maxWidth: 450 }}
+            type="text" />
 
           <DialogContentText>
             <br />
           </DialogContentText>
           <TextField autoFocusmargin="dense" id="contact" label="Contacts"
-          placeholder='contacts'
-          sx={{ width: '75vw', maxWidth: 450 }}
+            placeholder='contacts'
+            sx={{ width: '75vw', maxWidth: 450 }}
 
             type="text" />
         </DialogContent>
