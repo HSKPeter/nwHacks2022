@@ -25,7 +25,7 @@ app.post('/items-lost', async (req, res) => {
   const date = tables.formatting_date(new Date(lossTime));
   const lat = null;
   const lon = null;
-  const transport = null;
+  const transport = location;
   const image_url = null;
 
   await tables.insert_lost_items(name, date, lat, lon, transport, image_url);
@@ -50,7 +50,7 @@ app.post('/items-found', async (req, res) => {
   const date = tables.formatting_date(new Date(foundTime));
   const lat = null;
   const lon = null;
-  const transport = null;
+  const transport = location;
   const image_url = imagePath;
 
   await tables.insert_found_items(name, date, lat, lon, transport, image_url, contact);
@@ -108,21 +108,21 @@ app.post('/search', async (req, res) => {
 
   var result = [];
 
-  const ceilingNumber = 100;
-  for (const hashtag of hashtags){
-    const current_num = 0;
-    let sql = `SELECT hashtag_id FROM hashtags WHERE name='${hashtag}'`;
-    result = await tables.async_query(sql);
-    let result_id = result[0].hashtag_id;
+  // const ceilingNumber = 100;
+  // for (const hashtag of hashtags){
+  //   const current_num = 0;
+  //   let sql = `SELECT hashtag_id FROM hashtags WHERE name='${hashtag}'`;
+  //   result = await tables.async_query(sql);
+  //   let result_id = result[0].hashtag_id;
     
-    var appeared_id = []; 
-    var start_stop = [current_num, ceilingNumber];
-    select_found_items_by_hashtag_id(result_id, start_stop, appeared_id, result);
+  //   var appeared_id = []; 
+  //   var start_stop = [current_num, ceilingNumber];
+  //   select_found_items_by_hashtag_id(result_id, start_stop, appeared_id, result);
 
-    if (result.length >= 100) {
-      break;
-    } 
-  }
+  //   if (result.length >= 100) {
+  //     break;
+  //   } 
+  // }
   //return result
   res.send({ data: result });
   // res.sendStatus(200);

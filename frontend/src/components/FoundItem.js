@@ -70,14 +70,14 @@ function ReportLoss() {
   }
 
   const addHashtag = () => {
-    const input = document.querySelector("#hashtags-input").value
+    const input = document.querySelector("#item-hashtags-input").value
     if (hashtags.includes(input)) {
       return
     }
     const newHashtags = hashtags.slice();
     newHashtags.push(input);
     console.log(newHashtags)
-    document.querySelector("#hashtags-input").value = "";
+    document.querySelector("#item-hashtags-input").value = "";
     updateHashtags(newHashtags);
   }
 
@@ -198,9 +198,9 @@ function ReportLoss() {
             <br />
           </DialogContentText>
           <>
-            <TextField autoFocusmargin="dense" id="hashtags-input" label="hashtags" variant="outlined"
-              label="Hashtags"
-              placeholder='Hashtags'
+            <TextField autoFocusmargin="dense" id="item-hashtags-input" label="hashtags" variant="outlined"
+              label="Item Hashtags"
+              placeholder='Item Hashtags'
               sx={{ width: '75vw', maxWidth: 450 }}
               InputProps={{
                 endAdornment: (

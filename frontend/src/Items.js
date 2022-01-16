@@ -70,7 +70,7 @@ function Items(props) {
         <SearchBar fetch={() => {props.dispatch(loadData())}}/>
       </div>
       <Grid container spacing={1} sx={{ mb: 10 }}>
-        {data.map((item) =>
+        {props.items.map((item) =>
         (
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <Item key={item.id} item={item} />

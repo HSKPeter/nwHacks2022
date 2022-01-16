@@ -37,7 +37,7 @@ function Item( {item}) {
             {item.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Location found: {item.location}
+            Location found: {item.transport}
             <br/>
             Date found: {item.date}
           </Typography>
