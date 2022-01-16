@@ -1,11 +1,9 @@
 import { React, Fragment } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import { TextField } from '@mui/material';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 function SearchBar() {
-  const [isFocused, setFocus] = useState(false);
-
 
   const handleEnterKeyPress = (e) => {
     if (e.keyCode == 13) {
@@ -32,8 +30,10 @@ function SearchBar() {
 }
 
 function sendPostRequestToAPI(text){  
+  if (text.length === 0){
+    return;
+  }
   console.log(text);
-  document.getElementById("standard-basic").value = "";
 }
 
 export default SearchBar;
