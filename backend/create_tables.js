@@ -15,7 +15,8 @@ async function create_tables() {
             lat DOUBLE,
             lon DOUBLE,
             transport VARCHAR(255),
-            photo_url VARCHAR(255)
+            photo_url VARCHAR(255),
+            contact VARCHAR(100)
             )
         `;
         
@@ -124,14 +125,14 @@ let add_single_quote = s => "'" + s + "'";
  */
 //insert entries into lost_and_found.found_items
 //if transport is provided, please set lat = lon = NULL, vice,versa
-function insert_found_items(name, date, lat, lon, transport, image_url) {
+function insert_found_items(name, date, lat, lon, transport, image_url, contact) {
     if (lat == null) {
         transport = add_single_quote(transport);
     } else {
         lat = add_single_quote(lat);
         lon = add_single_quote(lon);
     }
-    let sql = `INSERT INTO found_items VALUES (null, '${name}','${date}',${lat},${lon},${transport}, '${image_url}')`;
+    let sql = `INSERT INTO found_items VALUES (null, '${name}','${date}',${lat},${lon},${transport}, '${image_url}', '${contact}')`;
     db.insert_entries(sql);
 }
 
@@ -226,5 +227,15 @@ console.log(formatting_date(new Date(2021,0,15,16,17,1)));
 console.log(formatting_date(new Date())); 
 
 
-module.exports = {get_list_found_items, insert_found_items, reset_tables, get_list_all_hashtag, get_list_lost_items, insert_lost_items,add_hashtag, formatting_date, create_tables};
+module.exports = {
+    insert_found_items, 
+    get_list_found_items,     
+    reset_tables, 
+    get_list_all_hashtag, 
+    get_list_lost_items, 
+    insert_lost_items,
+    add_hashtag, 
+    formatting_date, 
+    create_tables
+};
 

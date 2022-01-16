@@ -97,16 +97,54 @@ app.post('/search', async (req, res) => {
   }).sort(sortNumbersInDescendingOrder);
 
   const result = [];
-  const ceilingNumber = 10;
-  for (const hashtag of hashtags) {
 
+  const ceilingNumber = 100;
+  for (const hashtag of hashtags){
+    const current_num = 0;
+    let sql = `SELECT hashtag_id FROM hashtags WHERE name='${hashtag}'`;
+    let result = await tables.async_query(sql);
+    let result_id = result[0].hashtag_id;
+    
+    var appeared_id = []; 
+    var start_stop = [current_num, ceilingNumber];
+    select_found_items_by_hashtag_id(result_id, start_stop, appeared_id, result);
+
+    if (result.length >= 100) {
+      break;
+    } 
   }
-
+  //return result
   res.send({ data: hashtags });
   // res.sendStatus(200);
 });
 
+async function select_found_items_by_hashtag_id(hashtag_id, start_stop, appeared_id, result) {
+  let num_start = start_stop[0];
+  let num_stop = start_stop[1];
+  let total_num = num_stop - num_start;
 
+  let sql = `SELECT found_items_id FROM mapping_found WHERE hashtag_id='${hashtag_id}' LIMIT ${num_start}, ${num_stop}`;
+  let result_id_raw = await db.async_query(sql);
+  let result_id = [];
+  result_id_raw.forEach((obj) => {
+    let id = obj.found_items_id;
+    
+    if (!appeared_id.includes(id)) {
+      appeared_id.push(id);
+      result_id.push(id);
+    }
+  });
+
+  
+  result_id.forEach(async(obj) => {
+    sql = `SELECT * FROM found_items WHERE found_items_id='${obj}'`;
+    //result_item = await db.async_query(sql);
+    //console.log(result_item);
+    result.push(await db.async_query(sql));
+    console.log(result);
+  });
+  return result;
+} 
 
 app.listen(port, () => {
   console.log(`Listening at PORT ${port}`)
@@ -115,3 +153,5 @@ app.listen(port, () => {
 function sortNumbersInDescendingOrder(num1, num2) {
   return num2 - num1;
 }
+
+module.exports = {select_found_items_by_hashtag_id};
