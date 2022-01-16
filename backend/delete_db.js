@@ -1,5 +1,5 @@
 //for deleting database: "lost_and_found"
-//then can rerun create.js and create_tables.js to update table columns 
+//then can rerun create.js and create_tables.create_tables() to update table columns 
 
 let mysql = require ('mysql2');
 
@@ -22,3 +22,5 @@ con.connect(function(err) {
         console.log(`DB ${db_name} Dropped!`);
     });
 });
+
+con.end();
