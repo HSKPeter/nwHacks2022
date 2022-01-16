@@ -14,7 +14,11 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
 function ReportLoss() {
+  function handleSelectedTags(items) {
+    console.log(items);
+  }
 
   const navigate = useNavigate();
 
@@ -93,6 +97,7 @@ function ReportLoss() {
             sx={{ width: '75vw', maxWidth: 450 }}
 
             type="text" />
+            
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
