@@ -20,12 +20,13 @@ app.get('/', (req, res) => {
 // OK: Report a lost item (image)
 app.post('/items-lost', async (req, res) => {
   console.log(req.body);
-  const name = "wallet";
-  // const date = tables.formatting_date(new Date());
+  const { description, lossTime, location, contact } = req.body;
+  const name = description;
+  const date = tables.formatting_date(new Date(lossTime));
   const lat = null;
   const lon = null;
-  const transport = "49";
-  const image_url = "http://www.google.com/JHSJnewj28";
+  const transport = null;
+  const image_url = null;
 
   await tables.insert_lost_items(name, date, lat, lon, transport, image_url);
   res.sendStatus(200);
@@ -33,10 +34,10 @@ app.post('/items-lost', async (req, res) => {
 
 // OK: Retrieve a list of found items
 app.get('/items-found', async (req, res) => {
-  const itemsFound = await tables.get_list_lost_items();
+  const itemsFound = await tables.get_list_found_items();
   console.log(itemsFound)
   //res.sendStatus(200); //send({ data: JSON.stringify(itemsFound) })
-  res.send({ data: JSON.stringify(itemsFound) })
+  res.send({ data: itemsFound })
 });
 
 
@@ -44,12 +45,13 @@ app.get('/items-found', async (req, res) => {
 // OK: Report a found item (image)
 app.post('/items-found', async (req, res) => {
   console.log(req.body);
-  const name = "wallet";
-  const date = tables.formatting_date(new Date());
+  const { imagePath, description, foundTime, location, contact, hashtags } = req.body;
+  const name = description;
+  const date = tables.formatting_date(new Date(foundTime));
   const lat = null;
   const lon = null;
-  const transport = "49";
-  const image_url = "http://www.google.com/JHSJnewj28";
+  const transport = null;
+  const image_url = imagePath;
 
   await tables.insert_found_items(name, date, lat, lon, transport, image_url);
 
@@ -96,7 +98,7 @@ app.post('/search', async (req, res) => {
 
   const result = [];
   const ceilingNumber = 10;
-  for (const hashtag of hashtags){
+  for (const hashtag of hashtags) {
 
   }
 
