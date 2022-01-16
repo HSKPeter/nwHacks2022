@@ -56,7 +56,7 @@ function ReportLoss() {
 
   return (
     <Fragment>
-      <Card sx={{ minWidth: 275, mx: 'auto', mt: '1em' }}>
+      <Card sx={{ width:'75vw', maxWidth:500, mx: 'auto', mt: '1em' }}>
         <CardContent>
 
           <Typography variant="h5" component="div">
