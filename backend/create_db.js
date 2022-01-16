@@ -22,3 +22,5 @@ con.connect(function(err) {
         console.log(`DB ${db_name} Created!`);
     });
 });
+
+con.end();
