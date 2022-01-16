@@ -3,19 +3,21 @@ let tables = require("./create_tables");
 
 
 
-// (async () => {
-//     let create = await db.create_db(db.db_name);
-//     await tables.create_tables();
-// })();
+(async () => {
+    //await db.drop_db(db.db_name);                 //command 1
+    //let create = await db.create_db(db.db_name);  //command 2
+    //await tables.create_tables();                 //command 3
+    //db.con.end();
+})();
 
-//PLEASE FIRST RUN node create.js, and await tables.create_tables(); first
+//PLEASE FIRST RUN command 1, then command 2, then command 3 SEPARATELY.
 (async () => {
     await tables.reset_tables();
 
-    // //found_items
-    await tables.insert_found_items("wallet", "2021-01-04 00:12:59", null, null, "99"); //1
-    await tables.insert_found_items("bottle", "2021-01-04 17:15:01", null, null, "49"); //2
-    await tables.insert_found_items("bottle", tables.formatting_date(new Date()), 49.26073, -123.24598, null); //3
+    //found_items
+    await tables.insert_found_items("wallet", "2021-01-04 00:12:59", null, null, "99", "https://na.cx/SA2nh5jd"); //1
+    await tables.insert_found_items("bottle", "2021-01-04 17:15:01", null, null, "49", "https://www.google.com/sndskfD54E"); //2
+    await tables.insert_found_items("bottle", tables.formatting_date(new Date()), 49.26073, -123.24598, null, "www.dsjghdsj.com/sehgHUUGu"); //3
 
     //lost_items
     await tables.insert_lost_items("lipstick", "2021-01-03 00:12:59", null, null, "99");
