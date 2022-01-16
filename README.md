@@ -11,6 +11,7 @@ For searchers, our AI word suggestion would provide the most suitable keywords a
 
 ## Tech stacks used
 * React
+* Material UI
 * Redux
 * Express
 * Microsoft Azure Computer Vision
