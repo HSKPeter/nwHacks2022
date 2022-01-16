@@ -13,6 +13,7 @@
     "@azure/cognitiveservices-computervision": "^8.1.0",
     "@azure/storage-blob": "^12.8.0",
     "async": "^3.2.3",
+    "cors": "^2.8.5",
     "dotenv": "^12.0.3",
     "express": "^4.17.2",
     "mysql2": "^2.3.3",

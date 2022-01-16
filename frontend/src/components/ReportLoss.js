@@ -43,7 +43,7 @@ function ReportLoss() {
       contact: contact
     }
 
-    fetch("localhost:8080/items-lost", {
+    fetch("http://localhost:8080/items-lost", {
     method: 'POST',
     body: JSON.stringify(lossItem),
     headers: { 'Content-Type': 'application/json'}
