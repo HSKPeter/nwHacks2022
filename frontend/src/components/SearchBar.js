@@ -7,7 +7,7 @@ function SearchBar() {
 
   return (
     <Fragment>
-    <TextField id="standard-basic" label="Search" variant="standard" sx={{width: 400}}
+    <TextField id="standard-basic" label="Search" variant="standard" sx={{width: 300}}
     InputProps={{
       endAdornment: (
        <SearchIcon / > 

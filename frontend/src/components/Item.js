@@ -24,7 +24,7 @@ function Item( {item}) {
   }
 
   return (
-    <Card sx={{ width:'100%', maxWidth: '400px', mx: 'auto', mt: '2em' }}>
+    <Card sx={{ width:'100%', maxWidth: '325px', mx: 'auto', mt: '2em' }}>
       <CardActionArea>
         <CardMedia
           component="img"
