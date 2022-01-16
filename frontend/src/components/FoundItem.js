@@ -30,6 +30,11 @@ function ReportLoss() {
   const [isUploadingImage, setImageUploadingStatus] = React.useState(false);
   const [imagePath, setImagePath] = React.useState("");
   const [hashtags, updateHashtags] = React.useState([]);
+  const [description, setDescription] = React.useState("");
+  const [foundTime, setFoundTime] = React.useState("");
+  const [location, setLocation] = React.useState("");
+  const [contact, setContact] = React.useState("");
+
 
   const handleFound = () => {
     setOpen(true);
@@ -40,7 +45,12 @@ function ReportLoss() {
   }
 
   const saveFound = () => {
+    let foundItem = {
+      imagePath, description, foundTime, location, contact
+    }
+    console.log(foundItem);
     setOpen(false);
+    setImagePath("");
   }
 
   const handleKeyDown = (e) => {
@@ -130,21 +140,26 @@ function ReportLoss() {
                 : ""}
             </Grid>
           </Grid>
-          <TextField autoFocusmargin="dense" id="description" label="Description"
+          <TextField id="description" label="Description"
             placeholder='Description' multiline
             sx={{ width: '75vw', maxWidth: 450 }}
-            type="text" />
+            type="text" onChange={(e) => {
+              setDescription(e.target.value);
+            }}/>
           <DialogContentText>
             <br />
           </DialogContentText>
 
           <TextField
-            autoFocusmargin="dense"
+          
             id="datetime-local"
             label="Found Time"
             type="datetime-local"
             defaultValue="2021-01-16T10:30"
             sx={{ width: '75vw', maxWidth: 450 }}
+            onChange={(e) => {
+              setFoundTime(e.target.value);
+            }}
             InputLabelProps={{
               shrink: true,
             }}
@@ -152,19 +167,23 @@ function ReportLoss() {
           <DialogContentText>
             <br />
           </DialogContentText>
-          <TextField autoFocusmargin="dense" id="location" label="Found Location"
+          <TextField id="location" label="Found Location"
             placeholder='Found Location'
             sx={{ width: '75vw', maxWidth: 450 }}
-            type="text" />
+            type="text" onChange={(e) => {
+              setLocation(e.target.value);
+            }} />
 
           <DialogContentText>
             <br />
           </DialogContentText>
-          <TextField autoFocusmargin="dense" id="contact" label="Contacts"
+          <TextField id="contact" label="Contacts"
             placeholder='Contacts'
             sx={{ width: '75vw', maxWidth: 450 }}
-
-            type="text" />
+            type="text" 
+            onChange={(e) => {
+              setContact(e.target.value);
+            }} />
           <DialogContentText>
             <br />
           </DialogContentText>
