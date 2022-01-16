@@ -13,8 +13,7 @@ function SearchBar() {
 
   const handleClickOfSearchIcon = () => {
     const userInput = document.getElementById("standard-basic").value;
-    sendPostRequestToAPI(userInput);
-    
+    sendPostRequestToAPI(userInput);    
   }
 
   return (
@@ -34,9 +33,9 @@ function sendPostRequestToAPI(text){
   if (text.length === 0){
     return;
   } else {
-    fetch("localhost:8080/search", {
+    fetch("http://localhost:8080/search", {
       method: 'POST',
-      body: JSON.stringify(text),
+      body: JSON.stringify({keywords: text}),
       headers: { 'Content-Type': 'application/json'}
     }).then(() => {
       console.log("search request posted");

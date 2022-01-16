@@ -2,12 +2,13 @@
 //then can rerun create.js and create_tables.create_tables() to update table columns 
 
 let mysql = require ('mysql2');
+const { database_password } = require("./api-keys");
 
 //to be changed by your configuration
 let con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "0000" 
+    password: database_password, 
 })
 
 let db_name = "lost_and_found";

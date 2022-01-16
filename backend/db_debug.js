@@ -4,9 +4,9 @@ let tables = require("./create_tables");
 
 
 (async () => {
-    //await db.drop_db(db.db_name);                 //command 1
-    //let create = await db.create_db(db.db_name);  //command 2
-    //await tables.create_tables();                 //command 3
+    // await db.drop_db(db.db_name);                 //command 1
+    // let create = await db.create_db(db.db_name);  //command 2
+    // await tables.create_tables();                 //command 3
     //db.con.end();
 })();
 

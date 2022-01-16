@@ -1,5 +1,6 @@
 
-let mysql = require ('mysql2');
+let mysql = require('mysql2');
+const { database_password } = require("./api-keys");
 
 let db_name = "lost_and_found"
 
@@ -7,16 +8,16 @@ let db_name = "lost_and_found"
 let con_no_db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "0000"
+    password: database_password
 });
 
 //to be changed by your configuration
 let con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "0000", 
+    password: database_password,
     database: "lost_and_found",
-    dateStrings : true
+    dateStrings: true
 });
 
 /**
@@ -24,7 +25,7 @@ let con = mysql.createConnection({
  * @param {string} sql non-select query
  */
 function query(sql) {
-    con.connect(function(err) {
+    con.connect(function (err) {
         if (err) throw err;
         con.query(sql, function (err, result) {
             if (err) throw err;
@@ -62,7 +63,7 @@ function query_select(sql) {
             return err ? reject(err) : resolve(result);
         })
     })
-    
+
 }
 
 /**
@@ -92,4 +93,15 @@ function drop_db(name) {
 
 
 
-module.exports = { mysql, con, con_no_db, db_name, query, query_select, async_query, insert_entries, create_db, drop_db};
+module.exports = {
+    mysql,
+    con,
+    con_no_db,
+    db_name,
+    query,
+    query_select,
+    async_query,
+    insert_entries,
+    create_db,
+    drop_db
+};
