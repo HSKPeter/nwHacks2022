@@ -39,12 +39,10 @@ function Items() {
       <div style={{marginLeft: "auto", marginRight: "auto", marginTop:"20px"}}>
         <SearchBar />
       </div>
-      <Grid container spacing={2}>
+      <Grid container spacing={1} sx={{mb:10}}>
         {data.map((item) =>
         (
-          <Grid item xs={12} sm={6} md={4} lg={3}>
             <Item key={item.id} item={item} />
-          </Grid>
         )
         )}
       </Grid>

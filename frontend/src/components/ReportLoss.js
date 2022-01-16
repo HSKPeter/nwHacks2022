@@ -83,7 +83,7 @@ function ReportLoss() {
           <DialogContentText>
             Please describe your loss item
           </DialogContentText>
-          <TextField autoFocusmargin="dense" id="description" label="Description"
+          <TextField id="description" label="Description"
             placeholder='description' multiline
             sx={{ width: '75vw', maxWidth: 450 }}
             type="text" onChange={(e) => {
@@ -94,7 +94,7 @@ function ReportLoss() {
           </DialogContentText>
 
           <TextField
-            autoFocusmargin="dense"
+          
             id="datetime-local"
             label="LossTime"
             type="datetime-local"
@@ -110,7 +110,7 @@ function ReportLoss() {
           <DialogContentText>
             <br />
           </DialogContentText>
-          <TextField autoFocusmargin="dense" id="location" label="Location"
+          <TextField id="location" label="Location"
             placeholder='Location'
             sx={{ width: '75vw', maxWidth: 450 }}
             type="text" onChange={(e) => {
@@ -120,7 +120,7 @@ function ReportLoss() {
           <DialogContentText>
             <br />
           </DialogContentText>
-          <TextField autoFocusmargin="dense" id="contact" label="Contacts"
+          <TextField id="contact" label="Contacts"
             placeholder='contacts'
             sx={{ width: '75vw', maxWidth: 450 }}
             type="text"
