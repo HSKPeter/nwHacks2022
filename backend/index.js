@@ -53,7 +53,17 @@ app.post('/items-found', async (req, res) => {
   const transport = null;
   const image_url = imagePath;
 
-  await tables.insert_found_items(name, date, lat, lon, transport, image_url);
+  await tables.insert_found_items(name, date, lat, lon, transport, image_url, contact);
+
+  var id = await db.async_query(`SELECT LAST_INSERT_ID()`);
+  id = id[0]['LAST_INSERT_ID()']
+
+  var map_hashtag = new Map();
+  for (var h of hashtags) {
+    map_hashtag.set(h, 0); //suppose to be isObject for the second argument    
+  }
+
+  await tables.add_hashtag(id, map_hashtag, 0);
 
   res.sendStatus(200);
 });
@@ -96,13 +106,13 @@ app.post('/search', async (req, res) => {
     }
   }).sort(sortNumbersInDescendingOrder);
 
-  const result = [];
+  var result = [];
 
   const ceilingNumber = 100;
   for (const hashtag of hashtags){
     const current_num = 0;
     let sql = `SELECT hashtag_id FROM hashtags WHERE name='${hashtag}'`;
-    let result = await tables.async_query(sql);
+    result = await tables.async_query(sql);
     let result_id = result[0].hashtag_id;
     
     var appeared_id = []; 
@@ -114,7 +124,7 @@ app.post('/search', async (req, res) => {
     } 
   }
   //return result
-  res.send({ data: hashtags });
+  res.send({ data: result });
   // res.sendStatus(200);
 });
 
