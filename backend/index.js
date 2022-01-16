@@ -134,16 +134,21 @@ async function select_found_items_by_hashtag_id(hashtag_id, start_stop, appeared
       result_id.push(id);
     }
   });
+  var result_item;
+  // result_id.forEach(async(obj) => {
+  //   sql = `SELECT * FROM found_items WHERE found_items_id='${obj}'`;
+  //   result_item = await db.async_query(sql);
+  //   result.push(result_item[0]);
+  //   console.log(result);
+  // });
 
-  
-  result_id.forEach(async(obj) => {
+  for (const obj of result_id) {
     sql = `SELECT * FROM found_items WHERE found_items_id='${obj}'`;
-    //result_item = await db.async_query(sql);
-    //console.log(result_item);
-    result.push(await db.async_query(sql));
-    console.log(result);
-  });
-  return result;
+    result_item = await db.async_query(sql);
+    result.push(result_item[0]);
+    //console.log(result);
+  }
+  //console.log(result);
 } 
 
 app.listen(port, () => {

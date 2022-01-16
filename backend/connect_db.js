@@ -1,6 +1,7 @@
 
 let mysql = require('mysql2');
-const { database_password } = require("./api-keys");
+//onst { database_password } = require("./api-keys");
+const { database_password } = "0000";
 
 let db_name = "lost_and_found"
 
@@ -8,14 +9,15 @@ let db_name = "lost_and_found"
 let con_no_db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: database_password
+    password: "0000" //password: database_password
 });
 
 //to be changed by your configuration
 let con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: database_password,
+    //password: database_password,
+    password: "0000",
     database: "lost_and_found",
     dateStrings: true
 });
