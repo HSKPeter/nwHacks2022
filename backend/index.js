@@ -1,5 +1,5 @@
 const express = require('express');
-const { OPEN_AI_API_KEY } = require("./api-keys");
+const { open_ai_api_key } = require("./api-keys");
 const fetch = require('node-fetch');
 
 const app = express();
@@ -30,6 +30,8 @@ app.post('/items-found', async (req, res) => {
 // Search for item
 app.post('/search', async (req, res) => {
   const { keywords } = req.body;
+  // {"keywords": "abcdadfaf"}
+
   console.log(typeof keywords)
   if (typeof keywords !== "string") {
     res.sendStatus(500).send({ message: "Keyword must be a string." });
@@ -51,7 +53,9 @@ app.post('/search', async (req, res) => {
     headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${OPEN_AI_API_KEY}`}
   });
   const body = await response.json();
+  console.log(body)
   const scores = body.map(item => item.score);
+  
   hashtags = hashtags.map((hashtag, index) => {
     return {
       text: hashtag,
@@ -59,7 +63,7 @@ app.post('/search', async (req, res) => {
     }
   })
 
-  res.sendStatus(200).send({ data: JSON.stringify(hashtags) });
+  res.sendStatus(200).send({ data: hashtags });
 });
 
 
