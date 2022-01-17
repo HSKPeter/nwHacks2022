@@ -1,6 +1,6 @@
-# Lost n Found
+# Lost & Found
 
-## About th project
+## About this project
 Sometimes it might be annoying when you lose something. In this digital era, you might be tempted to search in local Facebook groups, local subreddits, or even stick to the traditional way, which is going to the police station and trying to find it.
 
 Yet, with this “Lost & Found” app, we aim to provide a modern solution to this problem by providing an AI-integrated platform for searchers to find their items, and for reporters to report what they have picked up.
@@ -14,6 +14,7 @@ For searchers, our AI word suggestion would provide the most suitable keywords a
 * Material UI
 * Redux
 * Express
+* MySQL
 * Microsoft Azure Computer Vision
 * Microsoft Azure Storage
 * Open AI
